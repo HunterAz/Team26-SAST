@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends "user_layout/loginLayout.html" %}
+{% block container %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+<body>
+    <h1>Welcome!</h1>
+    <br>
+    <p>You have not confirmed your account. Please check your inbox for the confirmation link</p>
+    <p>Didn't get the email?<a href="{{ url_for('userrouting.resend_confirmation') }}"> Resend</a></p>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    </div>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends "user_layout/base.html" %}
+{% block title %} Sign Up {% endblock %}
+{% block container %} Please fill in all the details
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+</head>
+<body>
+<form method="POST" action="sign_up" id="submitUserForm">
+    <h3 align="center">Sign Up</h3>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <i class="fas fa-envelope"></i>
+        <input type="email" class="form-control" id="email" name="email" placeholder="jenny@gmail.com" required/>
+        <label for="username">Username</label>
+        <i class="fas fa-user"></i>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required/>
+        <label for="password">Password</label>
+        <i class="fas fa-lock"></i>
+        <input type="password" class="form-control" id="password" name="password" pattern=".{8,64}" title="Password must be 8 to 64 characters" oninput="validatePassword('password','confirmPassword')" placeholder="Enter your password"required/>
+        <label for="confirmPassword">Confirm Password</label>
+        <i class="fas fa-lock"></i>
+	<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" pattern=".{8,64}" title="Password must be 8 to 64 characters" oninput="validatePassword('password','confirmPassword')" placeholder="Re-enter your password"required/>
+        <label for ="dob">Date Of Birth</label>
+        <i class="fas fa-calendar"></i>
+        <input type ="date" class="form-control" id="dob" name="dob" required>
+        <br>
+	<div class="g-recaptcha" data-sitekey="6LfKQWQcAAAAAKvRtiPA9XZa4jYRGoZJZUOFF_-a" data-callback="recaptchaCallback"></div> <!-- for captcha -->
+    </div>
+    <button id="submitBtn" type="submit" class="btn btn-colour" disabled>Submit</button>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+</form>
+<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+{% endblock %}
+</body>
+</html>

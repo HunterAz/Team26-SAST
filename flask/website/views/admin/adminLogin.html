@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends "user_layout/base.html" %}
+{% block container %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+<body>
+<form action="adminLogin" method="POST">
+    <h3 align="center">Admin Login</h3>
+    <div class="form-group">
+        <label for="admin_name">Username</label>
+        <i class="fas fa-user"></i>
+        <input type="text" class="form-control" id="admin_name" name="admin_name" placeholder="Enter your staff username" required/>
+        <label for="admin_password">Password</label>
+        <i class="fas fa-lock"></i>
+        <input type="password" class="form-control" id="admin_password" name="admin_password"placeholder="Enter your password" required/>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    </div>
+    <button type="submit" class="btn btn-colour" value="Login">Login</button>
+    </div>
+</form>
+    {% endblock %}
+</body>
+</html>
