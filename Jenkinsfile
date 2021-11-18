@@ -11,8 +11,7 @@ pipeline {
 				script {
 					def scannerHome = tool 'SonarQube';
 					withSonarQubeEnv('SonarQube') {
-					sh "${scannerHome}/bin/sonar-scanner 
-					-Dsonar.projectKey=team26-sonar -Dsonar.sources=."
+					sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=team26-sonar -Dsonar.sources=."
 					}
 				}
 			}
