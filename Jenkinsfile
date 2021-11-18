@@ -3,7 +3,7 @@ pipeline {
         stages {
 		stage('Checkout') {
 			steps {
-			git branch:'main', url: 'https://github.com/HunterAz/Team26-SAST.git'
+			git branch:'main', url: 'https://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@github.com/HunterAz/Team26-SAST.git'
 			}
 		}
 		stage('Code Quality Check via SonarQube') {
