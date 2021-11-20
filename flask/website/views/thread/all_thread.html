@@ -1,0 +1,11 @@
+{% extends "user_layout/loginLayout.html" %}
+{% block container %}
+<div class="content-wrapper">
+  <div class="ui stackable one column relaxed grid stacky">
+    <div class="wide column">
+      <h1 align="center">Latest Threads</h1>
+      {% include "thread/thread_list.html" %}
+    </div>
+  </div>
+</div>
+{% endblock %}
