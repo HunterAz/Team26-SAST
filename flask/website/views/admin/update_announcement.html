@@ -1,0 +1,24 @@
+{% extends "admin_layout/adminLayout.html" %}
+{% block container %}
+<div>
+<button class="ui btn btn-colour" onclick="window.location.href='/view_announcements'"> < Back to Announcement list</button>
+<h1>Update announcement</h1>
+{% set announcementID = announcements.announcementID %}
+<form
+  class="ui form"
+  method="POST"
+  action="/view_announcements/update/{{announcementID}}"
+  onkeydown="return event.key != 'Enter'"
+>
+<div class="field">
+  <label for="body">Announcement Description</label>
+  <textarea class="form-control" id="body" name="body" required>{{announcements.announcement_details}}</textarea>
+</div>
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<button class="ui btn btn-colour" type="submit">
+  <i class="pencil icon"></i>
+  Update Thread
+</button>
+</form>
+</div>
+{% endblock %}

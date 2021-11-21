@@ -1,0 +1,30 @@
+{% extends "user_layout/loginLayout.html" %}
+{% block title %} Profile Page {% endblock %}
+{% block container %}
+<form method="POST" action="update">
+<h1>Profile Page</h1>
+<div>
+    <p>Your account details are below:</p>
+    <div class="profile">
+        <center><img src="https://ui-avatars.com/api/?name={{account['username']}}" class="avatar rounded-circle z-depth-0" alt="avater image" height="100"/>
+        </center>
+        <br>
+        <label for="bios">Bios:</label> <br>
+        <input type="text" class="form-control" id="bios" name="bios" value='{{account['bios']}}' ></input>
+        <br>
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" value='{{account['username']}}' disabled/>
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" value='{{account['password']}}' disabled/>
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value='{{account['email']}}' disabled/>
+        <label for="dob">Date Of Birth:</label>
+        <input type="date" class="form-control" id="dob" name="dob" value='{{account['dob']}}' disabled/>
+        <br>
+        <button type="submit" class="btn btn-colour" value="update">Update</button>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div id="message">{{ message }}</div>
+    </div>
+</div>
+</form>
+{% endblock %}

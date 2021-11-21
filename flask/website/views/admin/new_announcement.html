@@ -1,0 +1,28 @@
+{% extends "admin_layout/adminLayout.html" %}
+{% block container %}
+<div>
+<h1>Add new announcement</h1>
+<form
+  class="ui form"
+  method="POST"
+  action="{{ url_for('adminforumrouting.create_announcement') }}"
+  onkeydown="return event.key != 'Enter'"
+>
+  {{ form.csrf_token }}
+  <div class="field">
+    {{ form.body.label }}
+    {{ form.body }}
+    {% for error in form.body.errors %}
+    <div class="ui pointing red basic label">
+      {{ error }}
+    </div>
+    {% endfor %}
+  </div>
+  <button class="ui btn btn-colour" type="submit">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <i class="fas fa-pencil-alt"></i>
+    Add new announcement
+  </button>
+</form>
+</div>
+{% endblock %}

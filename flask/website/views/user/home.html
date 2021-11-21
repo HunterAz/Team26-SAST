@@ -1,0 +1,16 @@
+{% extends "user_layout/loginLayout.html" %}
+{% block title %} Home Page {% endblock %}
+{% block container %}
+{% if announcement|length == 0 %}
+<div>
+    <h1 align="center">No announcements</h1>
+</div>
+{% else %}
+<div>
+<h1 align="center">Most Recent Announcment From Admin: <br>{{announc['announcement_details']}}</h1>
+</div>
+{% endif %}
+{% endblock %}
+{% block container1 %}
+{% include 'user_layout/carousel2.html' %}
+{% endblock %}
