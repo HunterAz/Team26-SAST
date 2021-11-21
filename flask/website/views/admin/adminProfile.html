@@ -1,0 +1,17 @@
+{% extends "admin_layout/adminLayout.html" %}
+{% block container %}
+<h1>Admin Profile Page</h1>
+<div>
+    <p>Your account details are below:</p>
+    <center>
+        <img src="https://ui-avatars.com/api/?name={{adminAccount['admin_name']}}" class="avatar rounded-circle z-depth-0" alt="avater image" height="100"/>
+    </center>
+    <br>
+    <label for="admin_name">Username</label>
+    <input type="text" class="form-control" id="admin_name" name="admin_name" value="{{adminAccount['admin_name']}}"
+           disabled/>
+    <label for="admin_email">Email</label>
+    <input type="text" class="form-control" id="admin_email" name="admin_email" value="{{adminAccount['admin_email']}}"
+           disabled/>
+</div>
+{% endblock %}

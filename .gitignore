@@ -1,0 +1,6 @@
+**/__pycache__
+**/database_data
+nginx/logs/*
+**/flask.log
+flask/.env
+mysql/.env

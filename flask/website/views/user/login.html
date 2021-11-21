@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "user_layout/base.html" %}
+{% block container %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>User Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+</head>
+<body>
+<form action="login" method="POST">
+    <h3 align="center">User Login</h3>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <i class="fas fa-user"></i>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required/>
+        <label for="password">Password</label>
+        <i class="fas fa-lock"></i>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password"required/>
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    </div>
+    <button type="submit" class="btn btn-colour" value="Login">Login</button>
+    <p>No account <a href="{{ url_for('userrouting.sign_up') }}">Register</a></p>
+    <p><a href="{{ url_for('userrouting.forgetPassword') }}">Forget Password?</a></p>
+    </div>
+</form>
+    {% endblock %}
+</body>
+</html>

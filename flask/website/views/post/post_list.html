@@ -1,0 +1,32 @@
+<div class="ui large comments topic-list">
+{% for posts in post %}
+{% set postid = posts.post_id %}
+<article class="comment topic-wrapper" id="post-{{ posts.post_id }}">
+    <a class="avatar">
+        <img src="https://ui-avatars.com/api/?name={{posts['username']}}" class="avatar rounded-circle z-depth-0" alt="avater image" height="100"/>
+    </a>
+    <div class="content">
+        Posted By: {{ posts['username']}}
+      <div class="metadata">
+        <i class="fas fa-clock"></i>
+        <span class="date">{{ posts['post_editdate'] }}</span>
+      </div>
+      <div class="text">
+        {{ posts.post_details }}
+      </div>
+    </div>
+    {% if posts['user_id'] == account %}
+        <div class="actions">
+          <a href="/all_thread/editpost/{{postid}}"
+            ><i 
+            class="fas fa-pencil-alt"></i>Edit</a
+          >
+          <a href="/all_thread/deletepost/{{postid}}"
+            ><i 
+            class="fas fa-trash-alt"></i>Delete</a
+          >
+        </div>
+    {% endif %}
+  </article>
+  {% endfor %}
+</div>
