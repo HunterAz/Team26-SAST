@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% block container %}
+<html>
+<body>
+    <h3 align="center">Thank you for signing up. Please follow this link to activate your account</h3>
+    <p><a href="{{confirm_url}}">{{confirm_url}}</a></p>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    </div>
+    {% endblock %}
+</body>
+</html>

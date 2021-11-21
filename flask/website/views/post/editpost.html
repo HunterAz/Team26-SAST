@@ -1,0 +1,24 @@
+{% extends "user_layout/loginLayout.html" %}
+{% block container %}
+<div>
+<button class="ui btn btn-colour" onclick="window.location.href='/all_thread'"><i class="fas fa-chevron-circle-left"></i> Back to thread list</button>
+<h1>Update post</h1>
+{% set postid = post.post_id %}
+<form
+    class="ui reply form"
+    method="POST"
+    action="/all_thread/updatepost/{{postid}}"
+    onkeydown="return event.key != 'Enter'"
+>
+    <div class="field">
+        <label for="editbody">Post details</label>
+        <textarea class="form-control" id="editbody" name="editbody" required>{{post.post_details}}</textarea>
+    </div>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button class="ui btn btn-colour" type="submit">
+    <i class="fas fa-pencil-alt"></i>
+    Update post
+    </button>
+</form>
+</div>
+{% endblock %}
