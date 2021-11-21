@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+{% extends "user_layout/loginLayout.html" %}
+{% block container %}
+<html>
+<body>
+    <h1>Welcome!</h1>
+    <br>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    </div>
+    {% endblock %}
+</body>
+</html>

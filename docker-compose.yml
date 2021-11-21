@@ -1,0 +1,43 @@
+services:
+  meok_flask:
+    container_name: "meok_flask"
+    build: ./flask
+    volumes:
+      - ./flask/website:/home/meok/website
+    env_file:
+      - ./flask/.env
+    depends_on:
+      - meok_nginx
+    networks:
+      - meok_network_front
+      - meok_network_back
+    restart: always
+  
+  meok_nginx:
+    build: ./nginx
+    container_name: "meok_nginx"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/logs/:/var/log/nginx/
+    networks:
+      - meok_network_front
+    restart: always
+
+  meok_mysql:
+    build: ./mysql
+    container_name: "meok_mysql"
+    env_file:
+      - ./mysql/.env
+    volumes:
+      - ./mysql/database_data:/var/lib/mysql
+    networks:
+      - meok_network_back
+    restart: always
+
+networks:
+  meok_network_front:
+    driver: bridge
+  meok_network_back:
+    driver: bridge

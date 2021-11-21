@@ -1,0 +1,62 @@
+<div class="ui large comments topic-list">
+    {% for thread in allthread %}
+    <article class="comment topic-wrapper" id="topic-wrapper-{{thread.threadid}}">
+      <div class="topic-header-row">
+        <h3 class="topic-subject">
+          {% set threadid = thread.threadid %}
+          <a class="unstyled-button"onclick="window.location.href='/admin_view_thread/{{threadid}}';"> {{ thread['thread_title'] }}</a>
+        </h3>
+      </div>
+      <a class="avatar">
+        {% set threadid = thread.threadid %}
+        <img src="https://ui-avatars.com/api/?name={{thread['username']}}" class="avatar rounded-circle z-depth-0" alt="avater image" height="100"/>
+      </a>
+      <div class="content">
+        {% set threadid = thread.threadid %}
+          Posted By: {{ thread['username']}}
+        <div class="metadata">
+          <div class="date">
+            <i class="fas fa-clock"></i>
+            {{ thread['thread_date'] }}
+          </div>
+          <div>
+            <i class="fas fa-comments"></i>
+            {% set threadid = thread.threadid %}
+            {% set posdis = namespace(value=0) %}`
+            {% for pos in post%}
+              {% if threadid == pos.threadid %}
+              {{pos.NUM}} post(s)
+              {% set posdis.value = 1 %}
+              {% endif%}
+            {% endfor %}
+            {% if posdis.value == 0 %}
+            0 post
+            {% endif%}
+          </div>
+        </div>
+        <div class="text">
+          {{ thread['thread_details'] }}
+        </div>
+        {% if account['Adminid'] == 34 %}
+        {% set threadid = thread.threadid %}
+        <div class="actions">
+          <a href="/admin_view_thread/delete/{{threadid}}"
+            ><i class="fas fa-trash-alt"></i>Delete</a
+          >
+        </div>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+    {% if totalpages %}
+        <div class="pagination">
+          {% for i in range(1, totalpages+1) %}
+            {%if i == page %}
+            <a class="active" href="/admin_view_thread/page/{{i}}">{{i}}</a>
+            {% else %}
+            <a href="/admin_view_thread/page/{{i}}">{{i}}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+    </div>

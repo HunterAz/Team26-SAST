@@ -1,0 +1,25 @@
+{% extends "user_layout/loginLayout.html" %}
+{% block container %}
+<div>
+<button class="ui btn btn-colour" onclick="window.location.href='/all_thread'"><i class="fas fa-chevron-circle-left"></i> Back to thread list</button>
+<h1>Update thread</h1>
+{% set threadid = thread.threadid %}
+<form
+  class="ui form"
+  method="POST"
+  action="/all_thread/updatethread/{{threadid}}"
+  onkeydown="return event.key != 'Enter'">
+  <div class="field">
+    <label for="editsubject">Thread title</label>
+    <input type="text" class="form-control" id="editsubject" name="editsubject" value="{{thread.thread_title}}" required>
+    <label for="editbody">Thread description</label>
+    <textarea class="form-control" id="editbody" name="editbody" required>{{thread.thread_details}}</textarea>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  </div>
+  <button class="ui btn btn-colour" type="submit">
+    <i class="fas fa-pencil-alt"></i>
+    Update Thread
+  </button>
+</form>
+</div>
+{% endblock %}
